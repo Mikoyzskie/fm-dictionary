@@ -16,19 +16,14 @@ export default function Header() {
 
                         <label className="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" value="" className="sr-only peer" />
-                            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none   rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[14px] after:w-[14px] after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                            <div className="w-10 h-5 bg-gray-200 peer-focus:outline-none   rounded-full peer dark:bg-[#757575] peer-checked:after:translate-x-[130%] rtl:peer-checked:after:-translate-x-full  after:content-[''] after:absolute after:top-[2.5px] after:start-[4px] after:bg-white after:rounded-full after:h-[14px] after:w-[14px] after:transition-all dark:border-gray-600 peer-checked:bg-[#A445ED] hover:bg-[#A445ED]"></div>
                         </label>
 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"><path fill="none" stroke="#A445ED" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"><path fill="none" stroke="#A445ED" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z" /></svg>
                     </div>
                 </div>
             </header>
-            <div className='w-full bg-[#1f1f1f] rounded-2xl flex items-center mb-[45px]'>
-                <input type="text" className='w-full text-xl font-bold py-5 px-6 bg-transparent outline-none border-none' />
-                <div className='pr-6'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path fill="none" stroke="#A445ED" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z" /></svg>
-                </div>
-            </div>
+
         </>
     )
 }
