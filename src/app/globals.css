@@ -18,3 +18,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: var(--background);
 }
+
+ul li::marker {
+  color: #a445ed;
+}
