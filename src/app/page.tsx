@@ -1,4 +1,4 @@
-
+import clsx from "clsx"
 
 export default async function Home() {
 
@@ -9,8 +9,8 @@ export default async function Home() {
     return response.json()
   }
 
-  const result = await searchWord("search")
-  console.log(result[0].meanings[1]);
+  const result = await searchWord("beautiful")
+  // console.log(result[0].meanings[1]);
 
   // const audio = new Audio;
   // audio.src = "https://api.dictionaryapi.dev/media/pronunciations/en/keyboard-us.mp3"
@@ -37,46 +37,85 @@ export default async function Home() {
 
           <svg className="hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75"><g fill="#A445ED" fillRule="evenodd"><circle cx="37.5" cy="37.5" r="37.5" opacity=".25" /><path d="M29 27v21l21-10.5z" /></g></svg>
         </div>
-        {result[0].meanings.map((defs: any) =>
-          <div key={defs.definition}>
-            <div className='flex items-center gap-8 mb-[43px]'>
-              <span className='text-2xl'>{defs.partOfSpeech}</span>
-              <div className='h-[1px] bg-[#3A3A3A] w-full' />
-            </div>
-            <div>
-              <p className='text-xl text-[#757575] mb-[27px]'>Meaning</p>
-              <ul className='text-lg mb-[41px] text-justify ml-[44px] list-disc list-outside'>
+        {result[0].meanings.map((defs: any, index: number) => {
 
-                {/* {
-                  defs.definitions.map((means: any, ) => (
-                    <li key={means}><p className="pl-3">{means}</p></li>
-                  ))
-                } */}
+          const syms = defs.synonyms
+          const ants = defs.antonyms
 
+          return (
+            <div key={index}>
+              <div className='flex items-center gap-8 mb-[43px]'>
+                <span className='text-2xl'>{defs.partOfSpeech}</span>
+                <div className='h-[1px] bg-[#3A3A3A] w-full' />
+              </div>
+              <div>
+                <p className='text-xl text-[#757575] mb-[27px]'>Meaning</p>
+                <ul className='text-lg mb-[41px] text-justify ml-[44px] list-disc list-outside'>
 
-              </ul>
-              <div className='flex gap-10 mb-[43px]'>
-                <p className='text-[#757575]'>Synonyms</p>
-                <p className='text-[#A445ED] text-xl font-bold'>electronic keyboard</p>
+                  {
+                    defs.definitions.map((means: any, index: number) => {
+                      return (
+                        <li key={index}>
+                          <p className="pl-3 my-[13px]">{means.definition}</p>
+                          {
+                            means.example === undefined ? "" : <p className="pl-3 my-[13px] text-[#757575]">{`"${means.example}"`}</p>
+                          }
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+                {syms.length > 0 ? (
+                  <div className={clsx("flex gap-10",
+                    ants.length === 0 ? "mb-[43px]" : ""
+                  )}>
+                    <p className='text-[#757575]'>Synonyms</p>
+                    <p className="text-[#A445ED] text-xl font-bold text-justify">
+                      {
+                        syms.map((sym: string, index: number) => (
+                          <span key={sym} className="inline-block text-justify">
+                            <span>
+                              {sym}
+                            </span>
+                            {
+                              index < syms.length - 1 && <span>&nbsp;&nbsp;&nbsp;</span>
+                            }
+                          </span>
+                        ))
+                      }
+                    </p>
+
+                  </div>
+                ) : ""
+                }
+                {ants.length > 0 ? (
+                  <div className="flex gap-10 mb-[43px] mt-[12px]">
+                    <p className='text-[#757575]'>Antonyms</p>
+                    <p className="text-[#A445ED] text-xl font-bold inline-block text-justify">
+                      {
+                        ants.map((ant: string, index: number) => (
+                          <span key={index} className="inline-block text-justify">
+                            <span>
+                              {ant}
+                            </span>
+                            {
+                              index < ants.length - 1 && <span>&nbsp;&nbsp;&nbsp;</span>
+                            }
+                          </span>
+                        ))
+                      }
+                    </p>
+
+                  </div>
+                ) : ""
+                }
+
               </div>
             </div>
-          </div>
+          )
+        }
         )}
-        <div className='flex items-center gap-8 mb-[43px]'>
-          <span className='text-2xl'>verb</span>
-          <div className='h-[1px] bg-[#3A3A3A] w-full' />
-        </div>
-        <div>
-          <p className='text-xl text-[#757575] mb-[27px]'>Meaning</p>
-          <ul className='text-lg list-disc ml-[22px] mb-[39px] text-justify'>
-            <li>
-              <div className='flex flex-col gap-[13px]'>
-                <p>To type on a computer keyboard.</p>
-                <p className='text-[#757575]'>{"“Keyboarding is the part of this job I hate the most.”"}</p>
-              </div>
-            </li>
-          </ul >
-        </div >
+
         <div>
           <div className='h-[1px] bg-[#3A3A3A] w-full mb-[21px]' />
           <div className='flex items-center gap-[25px] text-sm'>
