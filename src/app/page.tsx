@@ -96,9 +96,9 @@ export default async function Home(params: any) {
                       {
                         ants.map((ant: string, index: number) => (
                           <span key={index} className="inline-block text-justify">
-                            <span>
+                            <Link href={`/?search=${ant}`}>
                               {ant}
-                            </span>
+                            </Link>
                             {
                               index < ants.length - 1 && <span>&nbsp;&nbsp;&nbsp;</span>
                             }
@@ -121,10 +121,8 @@ export default async function Home(params: any) {
           <div className='h-[1px] bg-[#3A3A3A] w-full mb-[21px]' />
           <div className='flex items-center gap-[25px] text-sm'>
             <span className='text-[#757575]'>Source</span>
-            <a href="https://en.wiktionary.org/wiki/keyboard" target='_blank' className='flex items-center gap-2'>
-              {result[0].sourceUrls.map((url: string) => (
-                url
-              ))}
+            <a href={`${result[0].sourceUrls[0]}`} target='_blank' className='flex items-center gap-2'>
+              {result[0].sourceUrls[0]}
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="none" stroke="#838383" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6.09 3.545H2.456A1.455 1.455 0 0 0 1 5v6.545A1.455 1.455 0 0 0 2.455 13H9a1.455 1.455 0 0 0 1.455-1.455V7.91m-5.091.727 7.272-7.272m0 0H9m3.636 0V5" /></svg>
             </a>
           </div>
