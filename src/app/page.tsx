@@ -1,41 +1,42 @@
 import clsx from "clsx"
+import Form from "@/components/Form";
+import Link from "next/link"
+import Audio from "@/components/Audio";
 
-export default async function Home() {
+interface AudioItem {
+  source: string
+}
+
+export default async function Home(params: any) {
 
   async function searchWord(term: string) {
-    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${term}`, {
+    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${params.searchParams.search}`, {
       method: 'GET'
     })
     return response.json()
   }
 
-  const result = await searchWord("beautiful")
-  // console.log(result[0].meanings[1]);
+  const result = await searchWord("search")
 
-  // const audio = new Audio;
-  // audio.src = "https://api.dictionaryapi.dev/media/pronunciations/en/keyboard-us.mp3"
+  const audioArr: AudioItem[] = []
 
-  // function playAudio() {
-  //   audio.play()
-  // }
-
+  const audio =
+    result[0].phonetics.map((auds: any) => {
+      if (auds.audio) {
+        audioArr.push(auds.audio.toString())
+      }
+    })
 
   return (
     <>
-      <div className='w-full bg-[#1f1f1f] rounded-2xl flex items-center mb-[45px]'>
-        <input type="text" className='w-full text-xl font-bold py-5 px-6 bg-transparent outline-none border-none' />
-        <div className='pr-6'>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path fill="none" stroke="#A445ED" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z" /></svg>
-        </div>
-      </div>
+      <Form />
       <main className='mb-[124px]'>
         <div className='flex items-center justify-between mb-[42px]'>
           <div>
             <h1 className='text-[64px] font-bold'>{result[0].word}</h1>
             <p className='text-[#A445ED] text-2xl '>{result[0].phonetic}</p>
           </div>
-
-          <svg className="hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75"><g fill="#A445ED" fillRule="evenodd"><circle cx="37.5" cy="37.5" r="37.5" opacity=".25" /><path d="M29 27v21l21-10.5z" /></g></svg>
+          <Audio search={audioArr[0]} />
         </div>
         {result[0].meanings.map((defs: any, index: number) => {
 
@@ -74,9 +75,9 @@ export default async function Home() {
                       {
                         syms.map((sym: string, index: number) => (
                           <span key={sym} className="inline-block text-justify">
-                            <span>
+                            <Link href={`/?search=${sym}`}>
                               {sym}
-                            </span>
+                            </Link>
                             {
                               index < syms.length - 1 && <span>&nbsp;&nbsp;&nbsp;</span>
                             }
