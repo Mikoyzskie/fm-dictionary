@@ -22,3 +22,8 @@ body {
 ul li::marker {
   color: #a445ed;
 }
+
+.svgtest {
+  grid-row: 1;
+  grid-column: 1;
+}

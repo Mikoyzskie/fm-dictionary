@@ -32,7 +32,7 @@ export default function Form() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className='w-full bg-[#1f1f1f] rounded-2xl flex items-center mb-[45px]'>
+            <div className='w-full dark:bg-[#1f1f1f] bg-[#f4f4f4] rounded-2xl flex items-center mb-[45px]'>
 
                 <input name='search' value={formData.search} type="text" className='w-full text-xl font-bold py-5 px-6 bg-transparent outline-none border-none' onChange={handleChange} autoComplete='off' />
 
