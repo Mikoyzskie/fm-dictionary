@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Header from '@/components/Header'
 
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata } from 'next'
+
+import './globals.css'
+
+import { PProvider, useCContext } from "@/lib/Provider"
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,12 +15,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+
+
   return (
-    <html lang="en">
-      <body className={`${inter.className} max-w-[737px] w-full m-auto px-6`}>
-        <Header />
+    <PProvider>
+      <html lang="en">
+
         {children}
-      </body>
-    </html>
+
+      </html>
+    </PProvider>
   )
 }
