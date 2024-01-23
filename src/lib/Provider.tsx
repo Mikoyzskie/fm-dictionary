@@ -12,14 +12,14 @@ interface IStates {
 }
 
 const ccontext = createContext<IStates>({
-    useFont: " ",
+    useFont: "sans",
     setUseFont: () => { }
 })
 
 export const useCContext = () => useContext(ccontext);
 
 export const PProvider = ({ children }: Props) => {
-    const [useFont, setUseFont] = useState<string>("inter")
+    const [useFont, setUseFont] = useState<string>("sans")
 
     return (
         <ccontext.Provider value={{ useFont, setUseFont }}>{children}</ccontext.Provider>

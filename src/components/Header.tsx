@@ -13,9 +13,6 @@ export default function Header() {
     const [fontDrop, setFontDrop] = useState(false)
     const { setUseFont, useFont } = useCContext();
 
-    console.log(useFont);
-
-
     return (
         <>
             <header className='header-container mt-[58px] mb-[51.5px] flex justify-between items-center'>
@@ -26,7 +23,7 @@ export default function Header() {
                             useFont === "sans" ? "Sans Serif" : useFont === "serif" ? "Serif" : "Mono"
                         }</span>
                         <Image src={"/icon-arrow-down.svg"} alt='arrow down' width={14} height={8} onClick={() => { setFontDrop(!fontDrop) }} className="hover:cursor-pointer" />
-                        <div className={clsx("font-select absolute p-6 top-10 rounded-2xl shadow-2xl shadow-white flex flex-col gap-4 max-w-[183px] w-full mt-[10.5px] -left-10 ", !fontDrop ? "" : "hidden")}  >
+                        <div className={clsx("font-select absolute p-6 top-10 rounded-2xl shadow-2xl shadow-white flex flex-col gap-4 max-w-[183px] w-full mt-[10.5px] -left-10 ", fontDrop ? "" : "hidden")}  >
                             <p className={`${inter.className} font-bold text-lg hover:cursor-pointer`} onClick={() => { setUseFont("sans") }}>Sans Serif</p>
                             <p className={`${lora.className} font-bold text-lg hover:cursor-pointer`} onClick={() => { setUseFont("serif") }}>Serif</p>
                             <p className={`${inconsolata.className} font-bold text-lg hover:cursor-pointer`} onClick={() => { setUseFont("mono") }}>Mono</p>
