@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import Form from "@/components/Form";
+
 import Link from "next/link"
 import Audio from "@/components/Audio";
 import Empty from "@/components/Empty";
@@ -11,10 +11,16 @@ interface AudioItem {
 export default async function Home(params: any) {
 
   async function searchWord() {
-    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${params.searchParams.search}`, {
-      method: 'GET'
-    })
-    return response.json()
+    try {
+      const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${params.searchParams.search}`, {
+        method: 'GET'
+      })
+      return response.json()
+    } catch (error) {
+      return
+    } finally {
+
+    }
   }
 
   const result = await searchWord()
@@ -31,7 +37,7 @@ export default async function Home(params: any) {
 
   return (
     <>
-      <Form />
+
       {!result[0] &&
         <Empty />
       }

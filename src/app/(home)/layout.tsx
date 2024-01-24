@@ -5,6 +5,7 @@ import { inter, lora, inconsolata } from "@/app/font"
 import '../globals.css'
 import Header from '@/components/Header'
 import { useCContext } from "@/lib/Provider"
+import Form from "@/components/Form";
 
 export default function RootLayout({
     children,
@@ -20,6 +21,7 @@ export default function RootLayout({
             useFont === "sans" ? inter.className : useFont === "serif" ? lora.className : inconsolata.className
         )}>
             <Header />
+            <Form />
             {children}
         </body>
 
