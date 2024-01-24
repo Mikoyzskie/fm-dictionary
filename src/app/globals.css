@@ -27,7 +27,3 @@ ul li::marker {
   grid-row: 1;
   grid-column: 1;
 }
-
-.font-select {
-  background: var(--background);
-}
