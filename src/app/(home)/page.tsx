@@ -2,13 +2,14 @@ import clsx from "clsx"
 import Link from "next/link"
 import Audio from "@/components/Audio";
 import Empty from "@/components/Empty";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+
 
 interface AudioItem {
   source: string
 }
 
-export default async function Home(params: Params) {
+
+export default async function Home(params: any) {
 
   let isLoading = false;
 
@@ -28,9 +29,12 @@ export default async function Home(params: Params) {
 
   const result = await searchWord()
 
+  console.log(result);
+
+
   const audioArr: AudioItem[] = []
 
-  if (result[0]) {
+  if (result && result[0]) {
     result[0].phonetics.map((auds: any) => {
       if (auds.audio) {
         audioArr.push(auds.audio.toString())
@@ -42,11 +46,9 @@ export default async function Home(params: Params) {
     <p> </p>
   )
 
-
-
   return (
     <>
-      {!result[0] &&
+      {!result || !result[0] &&
         <Empty />
       }
       {
@@ -57,7 +59,9 @@ export default async function Home(params: Params) {
               <h1 className='text-[32px] md:text-[64px] font-bold'>{result[0].word}</h1>
               <p className='text-[#A445ED] text-2xl '>{result[0].phonetic}</p>
             </div>
-            <Audio search={audioArr[0]} />
+            {
+              audioArr[0] != undefined ? <Audio search={audioArr[0]} /> : <Audio search={""} />
+            }
           </div>
           {result[0].meanings.map((defs: any, index: number) => {
 
@@ -138,16 +142,18 @@ export default async function Home(params: Params) {
           }
           )}
 
-          <div>
-            <div className='h-[1px] bg-[#E9E9E9] dark:bg-[#3A3A3A] w-full mb-[21px]' />
-            <div className='flex md:items-center md:gap-[25px] text-sm md:flex-row flex-col'>
-              <span className='text-[#757575]'>Source</span>
-              <a href={`${result[0].sourceUrls[0]}`} target='_blank' className='flex items-center gap-2'>
-                {result[0].sourceUrls[0]}
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="none" stroke="#838383" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6.09 3.545H2.456A1.455 1.455 0 0 0 1 5v6.545A1.455 1.455 0 0 0 2.455 13H9a1.455 1.455 0 0 0 1.455-1.455V7.91m-5.091.727 7.272-7.272m0 0H9m3.636 0V5" /></svg>
-              </a>
+          {result[0] &&
+            <div>
+              <div className='h-[1px] bg-[#E9E9E9] dark:bg-[#3A3A3A] w-full mb-[21px]' />
+              <div className='flex md:items-center md:gap-[25px] text-sm md:flex-row flex-col'>
+                <span className='text-[#757575]'>Source</span>
+                <a href={`${result[0].sourceUrls[0]}`} target='_blank' className='flex items-center gap-2'>
+                  {result[0].sourceUrls[0]}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="none" stroke="#838383" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6.09 3.545H2.456A1.455 1.455 0 0 0 1 5v6.545A1.455 1.455 0 0 0 2.455 13H9a1.455 1.455 0 0 0 1.455-1.455V7.91m-5.091.727 7.272-7.272m0 0H9m3.636 0V5" /></svg>
+                </a>
+              </div>
             </div>
-          </div>
+          }
 
         </main >
       }
