@@ -1,6 +1,5 @@
 
 import type { Metadata } from 'next'
-
 import './globals.css'
 
 import { PProvider, useCContext } from "@/lib/Provider"
@@ -20,10 +19,8 @@ export default function RootLayout({
 
   return (
     <PProvider>
-      <html lang="en">
-
+      <html lang="en" suppressHydrationWarning>
         {children}
-
       </html>
     </PProvider>
   )

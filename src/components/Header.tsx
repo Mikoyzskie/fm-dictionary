@@ -23,7 +23,7 @@ export default function Header() {
                             useFont === "sans" ? "Sans Serif" : useFont === "serif" ? "Serif" : "Mono"
                         }</span>
                         <Image src={"/icon-arrow-down.svg"} alt='arrow down' width={14} height={8} onClick={() => { setFontDrop(!fontDrop) }} className="hover:cursor-pointer" />
-                        <div className={clsx("font-select absolute p-6 top-10 rounded-2xl shadow-[0_5px_20px_5px_#A445ED] flex flex-col gap-4 max-w-[183px] w-full mt-[10.5px] -left-10 dark:bg-[#1f1f1f] bg-[#f4f4f4]", fontDrop ? "" : "hidden")}  >
+                        <div className={clsx("font-select absolute p-6 top-10 rounded-2xl shadow-[0_5px_20px_5px_#A445ED] flex flex-col gap-4 max-w-[183px] w-full mt-[10.5px] -left-10 dark:bg-[#1f1f1f] dark:text-white text-black bg-[#f4f4f4]", fontDrop ? "" : "hidden")}  >
                             <p className={`${inter.className} font-bold text-lg hover:cursor-pointer`} onClick={() => { setUseFont("sans") }}>Sans Serif</p>
                             <p className={`${lora.className} font-bold text-lg hover:cursor-pointer`} onClick={() => { setUseFont("serif") }}>Serif</p>
                             <p className={`${inconsolata.className} font-bold text-lg hover:cursor-pointer`} onClick={() => { setUseFont("mono") }}>Mono</p>
