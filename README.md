@@ -36,12 +36,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot.png)
 
 ### Links
 
 - Solution URL: [Github](https://github.com/Mikoyzskie/fm-dictionary)
-- Live Site URL: [Vercel](https://your-live-site-url.com)
+- Live Site URL: [Vercel](https://fm-dictionary-six.vercel.app/)
 
 ## My process
 
