@@ -39,7 +39,7 @@ export default async function Home(params: any) {
   }
 
 
-  if (params.searchParams.search === undefined) return (
+  if (!params.searchParams.search) return (
     <p> </p>
   )
 
