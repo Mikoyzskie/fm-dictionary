@@ -1,5 +1,4 @@
 import clsx from "clsx"
-import Loading from "@/components/Loading"
 import Link from "next/link"
 import Audio from "@/components/Audio";
 import Empty from "@/components/Empty";
@@ -39,9 +38,6 @@ export default async function Home(params: any) {
   }
 
 
-  if (!params.searchParams.search) return (
-    <p> </p>
-  )
 
 
   return (
