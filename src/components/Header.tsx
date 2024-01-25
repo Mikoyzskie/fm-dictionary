@@ -15,11 +15,11 @@ export default function Header() {
 
     return (
         <>
-            <header className='header-container mt-[58px] mb-[51.5px] flex justify-between items-center'>
+            <header className='header-container mt-6 md:mt-[58px] mb-6 md:mb-[51.5px] flex justify-between items-center'>
                 <Image src={"/logo.svg"} alt='logo' width={34} height={38} />
-                <div className='flex gap-[26px] items-center relative'>
+                <div className='flex md:gap-[26px] gap-4 items-center relative'>
                     <div className='flex gap-4 items-center ' onClick={() => { setFontDrop(!fontDrop) }}>
-                        <span className='font-bold text-lg hover:cursor-pointer'>{
+                        <span className='font-bold md:text-lg text-sm hover:cursor-pointer'>{
                             useFont === "sans" ? "Sans Serif" : useFont === "serif" ? "Serif" : "Mono"
                         }</span>
                         <Image src={"/icon-arrow-down.svg"} alt='arrow down' width={14} height={8} onClick={() => { setFontDrop(!fontDrop) }} className="hover:cursor-pointer" />
@@ -29,7 +29,7 @@ export default function Header() {
                             <p className={`${inconsolata.className} font-bold text-lg hover:cursor-pointer`} onClick={() => { setUseFont("mono") }}>Mono</p>
                         </div>
                     </div>
-                    <div className='bg-white h-8 w-[1px]' />
+                    <div className='bg-[#E9E9E9] h-8 w-[1px]' />
                     <Dark />
                 </div>
             </header>

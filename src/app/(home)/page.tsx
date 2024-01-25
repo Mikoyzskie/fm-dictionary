@@ -51,10 +51,10 @@ export default async function Home(params: any) {
       }
       {
         result[0] &&
-        <main className='mb-[124px]'>
-          <div className='flex items-center justify-between mb-[42px]'>
+        <main className='lg:mb-[124px] md:mb-[118px] mb-[89px] w-full'>
+          <div className='flex items-center justify-between mb-[32px] md:mb-[42px]'>
             <div>
-              <h1 className='text-[64px] font-bold'>{result[0].word}</h1>
+              <h1 className='text-[32px] md:text-[64px] font-bold'>{result[0].word}</h1>
               <p className='text-[#A445ED] text-2xl '>{result[0].phonetic}</p>
             </div>
             <Audio search={audioArr[0]} />
@@ -66,19 +66,19 @@ export default async function Home(params: any) {
 
             return (
               <div key={index}>
-                <div className='flex items-center gap-8 mb-[43px]'>
-                  <span className='text-2xl'>{defs.partOfSpeech}</span>
-                  <div className='h-[1px] bg-[#3A3A3A] w-full' />
+                <div className='flex items-center gap-4 md:gap-8 mb-[31px] md:mb-[43px]'>
+                  <span className='italic text-lg md:text-2xl font-bold'>{defs.partOfSpeech}</span>
+                  <div className='h-[1px] bg-[#E9E9E9] dark:bg-[#3A3A3A] w-full' />
                 </div>
                 <div>
-                  <p className='text-xl text-[#757575] mb-[27px]'>Meaning</p>
-                  <ul className='text-lg mb-[41px] text-justify ml-[44px] list-disc list-outside'>
+                  <p className='md:text-xl text-base text-[#757575] mb-[17px] md:mb-[27px]'>Meaning</p>
+                  <ul className='text-[17px] md:text-lg mb-[24px] md:mb-[41px] text-justify ml-6 md:ml-[44px] list-disc list-outside'>
 
                     {
                       defs.definitions.map((means: any, index: number) => {
                         return (
                           <li key={index}>
-                            <p className="pl-3 my-[13px]">{means.definition}</p>
+                            <p className="md:pl-3 my-[13px]">{means.definition}</p>
                             {
                               means.example === undefined ? "" : <p className="pl-3 my-[13px] text-[#757575]">{`"${means.example}"`}</p>
                             }
@@ -89,10 +89,10 @@ export default async function Home(params: any) {
                   </ul>
                   {syms.length > 0 ? (
                     <div className={clsx("flex gap-10",
-                      ants.length === 0 ? "mb-[43px]" : ""
+                      ants.length === 0 ? "mb-6 md:mb-[43px]" : ""
                     )}>
-                      <p className='text-[#757575]'>Synonyms</p>
-                      <p className="text-[#A445ED] text-xl font-bold text-justify">
+                      <p className='text-[#757575] md:text-[20px] text-base'>Synonyms</p>
+                      <p className="text-[#A445ED] text-base md:text-xl font-bold text-justify">
                         {
                           syms.map((sym: string, index: number) => (
                             <span key={sym} className="inline-block text-justify">
@@ -139,8 +139,8 @@ export default async function Home(params: any) {
           )}
 
           <div>
-            <div className='h-[1px] bg-[#3A3A3A] w-full mb-[21px]' />
-            <div className='flex items-center gap-[25px] text-sm'>
+            <div className='h-[1px] bg-[#E9E9E9] dark:bg-[#3A3A3A] w-full mb-[21px]' />
+            <div className='flex md:items-center md:gap-[25px] text-sm md:flex-row flex-col'>
               <span className='text-[#757575]'>Source</span>
               <a href={`${result[0].sourceUrls[0]}`} target='_blank' className='flex items-center gap-2'>
                 {result[0].sourceUrls[0]}

@@ -18,7 +18,7 @@ export default function RootLayout({
 
     return (
 
-        <body className={clsx(`max-w-[737px] w-full m-auto px-6 dark:bg-[#050505] bg-white dark:text-white text-[#050505]`,
+        <body className={clsx(`lg:max-w-[737px] w-full lg:m-auto px-6 lg:px-6 md:px-[39px] dark:bg-[#050505] bg-white dark:text-white text-[#050505] md:m-0`,
             useFont === "sans" ? inter.className : useFont === "serif" ? lora.className : inconsolata.className
         )}>
             <Providers>
