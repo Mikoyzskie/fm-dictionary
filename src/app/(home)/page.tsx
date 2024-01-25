@@ -2,12 +2,13 @@ import clsx from "clsx"
 import Link from "next/link"
 import Audio from "@/components/Audio";
 import Empty from "@/components/Empty";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 interface AudioItem {
   source: string
 }
 
-export default async function Home(params: any) {
+export default async function Home(params: Params) {
 
   let isLoading = false;
 
@@ -37,6 +38,9 @@ export default async function Home(params: any) {
     })
   }
 
+  if (!params.searchParams.search) return (
+    <p> </p>
+  )
 
 
 
